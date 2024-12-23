@@ -13,6 +13,11 @@
     color: #543280;
     margin: 0;
     text-transform: uppercase;
+    overflow: hidden;
+}
+
+.post a {
+    text-decoration: none;
 }
 
 .text {
@@ -21,6 +26,7 @@
     margin: 0.25rem 0 0 0;
     color: #593884;
     font-style: italic;
+    overflow: hidden;
 }
 
 @keyframes animate-in {
