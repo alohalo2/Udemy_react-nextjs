@@ -59,7 +59,7 @@ export async function action({request}) {
     const postData = Object.fromEntries(formData); // {body: '..., author: '...'}
     await fetch("http://localhost:8080/posts", {
         method: "post",
-        body: JSON.stringify(postData, null, 2),
+        body: JSON.stringify(postData),
         headers: {
             "Content-Type": "application/json",
         },
