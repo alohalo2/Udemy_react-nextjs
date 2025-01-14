@@ -136,7 +136,7 @@ export async function getLatestNews() {
 
 export async function getAvailableNewsYears() {
     const years = db
-        .prepare("SELECT DISTINCT strftime('%Y', date) as year FROM news")
+        .prepare("SELECT DISTINCT strftime('%Y', date) as year FROM news ORDER BY date DESC")
         .all()
         .map((year) => year.year);
 

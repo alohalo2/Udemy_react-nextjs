@@ -31,14 +31,13 @@
 
 import { notFound } from "next/navigation";
 
-import { DUMMY_NEWS } from "@/dummy-news";
-import { use } from "react";
 import ModalBackdrop from "@/components/modal-backdrop";
+import { getNewsItem } from "@/lib/news";
 
-export default function InterceptedImagePage({ params }) {
+export default async function InterceptedImagePage({ params }) {
 
-    const newItemSlug = use(params).slug;
-    const newsItem = DUMMY_NEWS.find((newsItem) => newsItem.slug === newItemSlug);
+    const newsItemSlug = (await params).slug;
+    const newsItem = await getNewsItem(newsItemSlug);
 
     if (!newsItem) {
         notFound();
