@@ -151,9 +151,7 @@ export default async function FilteredNewsPage({ params }) {
     // const selectedYear = filter ? filter[0] : undefined
     const selectedYear = filter?.[0];
     const selectedMonth = filter?.[1];
-
     
-
     return (
         <>
             {/* <Suspense fallback={<p>Loading Filter...</p>}>
