@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 
 import { addMessage } from '@/lib/messages';
-import { revalidatePath } from 'next/cache';
+import { revalidatePath, revalidateTag } from 'next/cache';
 
 export default function NewMessagePage() {
   async function createMessage(formData) {
@@ -9,9 +9,15 @@ export default function NewMessagePage() {
 
     const message = formData.get('message');
     addMessage(message);
-    // revalidatePath의 첫 번째 인자: page에 대한 캐싱을 지워라
-    // revalidatePath의 두 번째 인자: 중첩에 대한 캐싱을 지워라
-    revalidatePath('/messages','layout');
+    // revalidatePath: 하나의 인자인 page | layout을 
+    // 받지만 첫 번째 인자로 경로를 입력하고 
+    // 두 번째 인자로 재 검증할 분류(page | layout)를 
+    // 입력하면 해당하는 부분까지 캐싱 무효화 할 수 있다, 
+    // 기본값은 page이다.
+    // revalidatePath('/','layout');
+
+    // revalidateTag: tag가 있는 page나 layout들을 재검증한다.
+    revalidateTag('msg');
     redirect('/messages');
   }
 
